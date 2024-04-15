@@ -52,5 +52,3 @@ function imagesGalerry(image) {
 const createLists = images.map(imagesGalerry);
 
 galleryEl.append(...createLists);
-
-console.log(document.querySelector(".gallery"));
