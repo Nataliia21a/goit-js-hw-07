@@ -14,6 +14,7 @@ function destroyBoxes() {
 
 function createBoxes(amount) {
   destroyBoxes();
+
   for (let i = 0; i < amount; i++) {
     const box = document.createElement("div");
     const size = 30 + i * 10;
@@ -23,8 +24,8 @@ function createBoxes(amount) {
     box.classList.add("box");
     boxesEl.style.display = "flex";
     boxesEl.style.gap = "40px";
+    boxesEl.appendChild(box);
   }
-  boxesEl.appendChild(box);
 }
 const onClickCreate = (event) => {
   const amount = parseInt(inputEl.value);
