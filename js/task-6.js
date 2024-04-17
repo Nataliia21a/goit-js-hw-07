@@ -3,13 +3,17 @@ function getRandomHexColor() {
     .toString(16)
     .padStart(6, 0)}`;
 }
-
 const inputEl = document.querySelector("input");
 const btnCreateEl = document.querySelector("button[data-create]");
 const btnDestroyEl = document.querySelector("button[data-destroy]");
 const boxesEl = document.querySelector("#boxes");
 
+function destroyBoxes() {
+  boxesEl.innerHTML = "";
+}
+
 function createBoxes(amount) {
+  destroyBoxes();
   for (let i = 0; i < amount; i++) {
     const box = document.createElement("div");
     const size = 30 + i * 10;
@@ -17,10 +21,10 @@ function createBoxes(amount) {
     box.style.height = `${size}px`;
     box.style.backgroundColor = getRandomHexColor();
     box.classList.add("box");
-    boxesEl.appendChild(box);
     boxesEl.style.display = "flex";
     boxesEl.style.gap = "40px";
   }
+  boxesEl.appendChild(box);
 }
 const onClickCreate = (event) => {
   const amount = parseInt(inputEl.value);
@@ -31,11 +35,8 @@ const onClickCreate = (event) => {
     alert("Please enter a number between 1 and 100.");
   }
 };
-
 const onClickDestroy = (event) => {
-  const boxesContainer = document.getElementById("boxes");
-  boxesContainer.innerHTML = "";
+  destroyBoxes();
 };
-
 btnCreateEl.addEventListener("click", onClickCreate);
 btnDestroyEl.addEventListener("click", onClickDestroy);
